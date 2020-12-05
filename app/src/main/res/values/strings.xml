@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">covid19_info</string>
+    <string name="main_current_date">Current date</string>
+
 </resources>
