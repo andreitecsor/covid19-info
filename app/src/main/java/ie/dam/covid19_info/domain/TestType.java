@@ -26,6 +26,14 @@ public enum TestType {
         this.accuracy = accuracy;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public double getAccuracy() {
+        return accuracy;
+    }
+
     public static TestType getByType(String type) {
         return TYPE_MAP.get(type);
     }

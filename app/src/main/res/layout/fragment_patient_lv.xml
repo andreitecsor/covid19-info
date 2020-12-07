@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/tecsor_andrei_patient_lv_cl"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/lv_row_patient_negative"
+    android:theme="@style/Theme.AndreiTecsorHW2">
+
+    <ImageView
+        android:id="@+id/tecsor_andrei_patient_iv_boy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_boy" />
+
+    <ImageView
+        android:id="@+id/tecsor_andrei_patient_iv_girl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_girl" />
+
+    <TextView
+        android:id="@+id/tecsor_andrei_patient_tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:textColor="@color/black"
+        android:text="@string/patient_firstname_lastname"
+        app:layout_constraintBottom_toBottomOf="@+id/tecsor_andrei_patient_iv_boy"
+        app:layout_constraintStart_toEndOf="@+id/tecsor_andrei_patient_iv_boy"
+        app:layout_constraintTop_toTopOf="@+id/tecsor_andrei_patient_iv_boy" />
+
+    <TextView
+        android:id="@+id/tecsor_andrei_patient_tv_age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:textColor="@color/black"
+        android:text="@string/patient_age"
+        app:layout_constraintBottom_toBottomOf="@+id/tecsor_andrei_patient_tv_name"
+        app:layout_constraintStart_toEndOf="@+id/tecsor_andrei_patient_tv_name"
+        app:layout_constraintTop_toTopOf="@+id/tecsor_andrei_patient_tv_name" />
+
+    <TextView
+        android:id="@+id/tecsor_andrei_patient_tv_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:textColor="@color/black"
+        android:text="@string/patient_test_type"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tecsor_andrei_patient_iv_boy"
+        app:layout_constraintTop_toBottomOf="@+id/tecsor_andrei_patient_iv_boy" />
+
+    <TextView
+        android:id="@+id/tecsor_andrei_patient_tv_test_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textColor="@color/black"
+        android:layout_marginLeft="16dp"
+        android:text="@string/patient_date"
+        app:layout_constraintBottom_toBottomOf="@+id/tecsor_andrei_patient_tv_test"
+        app:layout_constraintStart_toEndOf="@+id/tecsor_andrei_patient_tv_test"
+        app:layout_constraintTop_toTopOf="@+id/tecsor_andrei_patient_tv_test" />
+</androidx.constraintlayout.widget.ConstraintLayout>

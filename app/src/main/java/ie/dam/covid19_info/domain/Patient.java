@@ -6,7 +6,7 @@ import java.time.LocalDate;
 public class Patient implements Serializable {
     private String firstName;
     private String lastName;
-    private LocalDate dateOfBirth;
+    private int age;
     private boolean sex;
     /**
      * true -> female
@@ -15,10 +15,10 @@ public class Patient implements Serializable {
     private Covid19Test covid19Test;
 
 
-    public Patient(String firstName, String lastName, LocalDate dateOfBirth, boolean sex, Covid19Test covid19Test) {
+    public Patient(String firstName, String lastName, int age, boolean sex, Covid19Test covid19Test) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.dateOfBirth = dateOfBirth;
+        this.age = age;
         this.sex = sex;
         this.covid19Test = covid19Test;
     }
@@ -39,12 +39,12 @@ public class Patient implements Serializable {
         this.lastName = lastName;
     }
 
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
+    public int getAge() {
+        return age;
     }
 
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public boolean isSex() {
@@ -70,12 +70,11 @@ public class Patient implements Serializable {
 
         Patient patient = (Patient) o;
 
+        if (age != patient.age) return false;
         if (sex != patient.sex) return false;
         if (firstName != null ? !firstName.equals(patient.firstName) : patient.firstName != null)
             return false;
         if (lastName != null ? !lastName.equals(patient.lastName) : patient.lastName != null)
-            return false;
-        if (dateOfBirth != null ? !dateOfBirth.equals(patient.dateOfBirth) : patient.dateOfBirth != null)
             return false;
         return covid19Test != null ? covid19Test.equals(patient.covid19Test) : patient.covid19Test == null;
     }
@@ -84,7 +83,7 @@ public class Patient implements Serializable {
     public int hashCode() {
         int result = firstName != null ? firstName.hashCode() : 0;
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
-        result = 31 * result + (dateOfBirth != null ? dateOfBirth.hashCode() : 0);
+        result = 31 * result + age;
         result = 31 * result + (sex ? 1 : 0);
         result = 31 * result + (covid19Test != null ? covid19Test.hashCode() : 0);
         return result;
@@ -95,7 +94,7 @@ public class Patient implements Serializable {
         return "Patient{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
+                ", dateOfBirth=" + age +
                 ", sex=" + sex +
                 ", covid19Test=" + covid19Test +
                 '}';

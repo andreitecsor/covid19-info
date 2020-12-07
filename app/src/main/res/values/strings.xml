@@ -15,5 +15,9 @@
     <string name="lv_hv_patients_tested">Patients tested</string>
     <string name="lv_hv_patients_count">No.</string>
     <string name="no_medical_centers">No medical centers</string>
+    <string name="patient_firstname_lastname">firstName lastName</string>
+    <string name="patient_age">(Age y/o)</string>
+    <string name="patient_test_type">Test: Type</string>
+    <string name="patient_date">(Date)</string>
 
 </resources>

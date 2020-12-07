@@ -23,7 +23,7 @@
             android:id="@+id/tecsor_andrei_main_cl_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/lv_row"
+            android:background="@drawable/lv_row_hc"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"

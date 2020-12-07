@@ -1,26 +1,32 @@
 package ie.dam.covid19_info;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import ie.dam.covid19_info.domain.Covid19Test;
 import ie.dam.covid19_info.domain.HealthCenter;
+import ie.dam.covid19_info.domain.Patient;
+import ie.dam.covid19_info.domain.TestType;
 import ie.dam.covid19_info.fragment.HealthCenterFragment;
 import ie.dam.covid19_info.fragment.InfoFragment;
+import ie.dam.covid19_info.fragment.PatientFragment;
 
 public class MainActivity extends AppCompatActivity {
     private static final int NEW_HC_REQUEST = 112;
@@ -32,11 +38,31 @@ public class MainActivity extends AppCompatActivity {
     private List<HealthCenter> healthCenters = new ArrayList<>();
 
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initialiseComponents(savedInstanceState);
+        //TestType type, LocalDate date, boolean result
+        Covid19Test c1 = new Covid19Test(TestType.PCR, LocalDate.now(), true);
+        Covid19Test c2 = new Covid19Test(TestType.ANTIBODY, LocalDate.now(), false);
+        Covid19Test c3 = new Covid19Test(TestType.ANTIGEN, LocalDate.now(), false);
+
+        Patient p1 = new Patient("Nicu ", "Muie", 32, true, c1);
+        Patient p2 = new Patient("Niculina", "Muie", 23, false, c2);
+        Patient p3 = new Patient("Niculisor", "MuieLuAURsiPSD", 21, false, c3);
+        Patient p4 = new Patient("Ardiana", "Barosanca", 45, true, c2);
+        Patient p5 = new Patient("Ciucalata", "Florin", 69, false, c1);
+
+        List<Patient> patients = new ArrayList<>();
+        patients.add(p1);
+        patients.add(p2);
+        patients.add(p3);
+        patients.add(p4);
+        patients.add(p5);
+        HealthCenter hc1 = new HealthCenter("Muiomed", "Str. Muie Aur", "Muie, Psd", true, patients);
+        healthCenters.add(hc1);
     }
 
     @Override
@@ -90,6 +116,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void openHCFragment(List<HealthCenter> list) {
         currentFragment = HealthCenterFragment.newInstance(list);
+        getSupportFragmentManager().beginTransaction().replace(R.id.tecsor_andrei_main_fl, currentFragment).commit();
+    }
+
+    public void openPatientFragment(HealthCenter healthCenter){
+        currentFragment = PatientFragment.newInstance(healthCenter);
         getSupportFragmentManager().beginTransaction().replace(R.id.tecsor_andrei_main_fl, currentFragment).commit();
     }
 

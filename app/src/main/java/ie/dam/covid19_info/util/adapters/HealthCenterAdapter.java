@@ -23,8 +23,7 @@ public class HealthCenterAdapter extends ArrayAdapter<HealthCenter> {
     private LayoutInflater inflater;
     private int resource;
 
-    public HealthCenterAdapter(@NonNull Context context, int resource,
-                               @NonNull List<HealthCenter> objects, LayoutInflater inflater) {
+    public HealthCenterAdapter(@NonNull Context context, int resource, @NonNull List<HealthCenter> objects, LayoutInflater inflater) {
         super(context, resource, objects);
         this.context = context;
         this.healthCenters = objects;
