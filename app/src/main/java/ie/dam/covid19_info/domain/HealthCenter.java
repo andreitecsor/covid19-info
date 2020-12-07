@@ -1,20 +1,33 @@
 package ie.dam.covid19_info.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class HealthCenter implements Serializable {
     private String name;
-    private String city;
-    private String county;
+    private String address;
+    private String location;
+    private boolean covid19Dedicated;
     private List<Patient> patients;
 
-    public HealthCenter(String name, String city, String county, List<Patient> patients) {
+    public HealthCenter(String name, String address, String location, boolean covid19Dedicated, List<Patient> patients) {
         this.name = name;
-        this.city = city;
-        this.county = county;
+        this.address = address;
+        this.location = location;
+        this.covid19Dedicated = covid19Dedicated;
         this.patients = patients;
     }
+
+    public HealthCenter(String name, String address, String location, boolean covid19Dedicated) {
+        this.name = name;
+        this.address = address;
+        this.location = location;
+        this.covid19Dedicated = covid19Dedicated;
+        this.patients = new ArrayList<>();
+    }
+
+
 
     public String getName() {
         return name;
@@ -24,20 +37,28 @@ public class HealthCenter implements Serializable {
         this.name = name;
     }
 
-    public String getCity() {
-        return city;
+    public String getAddress() {
+        return address;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getCounty() {
-        return county;
+    public void setCovid19Dedicated(boolean covid19Dedicated) {
+        this.covid19Dedicated = covid19Dedicated;
     }
 
-    public void setCounty(String county) {
-        this.county = county;
+    public boolean isCovid19Dedicated() {
+        return covid19Dedicated;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public List<Patient> getPatients() {
@@ -55,17 +76,20 @@ public class HealthCenter implements Serializable {
 
         HealthCenter that = (HealthCenter) o;
 
+        if (covid19Dedicated != that.covid19Dedicated) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (city != null ? !city.equals(that.city) : that.city != null) return false;
-        if (county != null ? !county.equals(that.county) : that.county != null) return false;
+        if (address != null ? !address.equals(that.address) : that.address != null) return false;
+        if (location != null ? !location.equals(that.location) : that.location != null)
+            return false;
         return patients != null ? patients.equals(that.patients) : that.patients == null;
     }
 
     @Override
     public int hashCode() {
         int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (city != null ? city.hashCode() : 0);
-        result = 31 * result + (county != null ? county.hashCode() : 0);
+        result = 31 * result + (address != null ? address.hashCode() : 0);
+        result = 31 * result + (location != null ? location.hashCode() : 0);
+        result = 31 * result + (covid19Dedicated ? 1 : 0);
         result = 31 * result + (patients != null ? patients.hashCode() : 0);
         return result;
     }
@@ -74,8 +98,9 @@ public class HealthCenter implements Serializable {
     public String toString() {
         return "HealthCenter{" +
                 "name='" + name + '\'' +
-                ", city='" + city + '\'' +
-                ", county='" + county + '\'' +
+                ", address='" + address + '\'' +
+                ", location='" + location + '\'' +
+                ", covid19Dedicated=" + covid19Dedicated +
                 ", patients=" + patients +
                 '}';
     }

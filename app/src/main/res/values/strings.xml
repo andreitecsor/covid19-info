@@ -2,4 +2,14 @@
     <string name="app_name">covid19_info</string>
     <string name="main_current_date">Current date</string>
 
+    <string name="add_clinic">Health center\'s name</string>
+    <string name="add_btn_save">Save</string>
+    <string name="add_address">Address</string>
+    <string name="add_is_only_covid_19_dedicated">Dedicated for COVID-19 only?</string>
+    <string name="add_city_county">City, County</string>
+    <string name="error_name">Invalid clinic name</string>
+    <string name="invalid_address">Invalid address</string>
+    <string name="invalid_location">Invalid location. Use the format provided in the hint.</string>
+    <string name="new_HC_added">New Heath Center added</string>
+
 </resources>
