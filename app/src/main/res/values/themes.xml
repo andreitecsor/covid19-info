@@ -16,5 +16,6 @@
 
         <!-- Customize your theme here. -->
         <item name="fontFamily">@font/anonymous_pro_bold</item>
+        <item name="android:textColor">@color/shadow_dark_blue</item>
     </style>
 </resources>

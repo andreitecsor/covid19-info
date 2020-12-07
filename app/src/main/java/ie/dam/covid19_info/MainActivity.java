@@ -2,17 +2,17 @@ package ie.dam.covid19_info;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,10 +25,10 @@ import ie.dam.covid19_info.fragment.InfoFragment;
 public class MainActivity extends AppCompatActivity {
     private static final int NEW_HC_REQUEST = 112;
 
+    private Fragment currentFragment;
     private FloatingActionButton fabInfo;
     private FloatingActionButton fabHome;
     private FloatingActionButton fabAdd;
-
     private List<HealthCenter> healthCenters = new ArrayList<>();
 
 
@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initialiseComponents(savedInstanceState);
-
     }
 
     @Override
@@ -49,20 +48,16 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), R.string.new_HC_added,
                         Toast.LENGTH_LONG).show();
                 healthCenters.add(healthCenter);
-
-                HealthCenterFragment fragment = HealthCenterFragment.newInstance(healthCenters);
-                getSupportFragmentManager().beginTransaction().replace(R.id.tecsor_andrei_main_fl, fragment).commit();
+                openHCFragment(healthCenters);
             }
         }
     }
-
 
     private void initialiseComponents(Bundle savedInstanceState) {
         setCurrentDate();
         //Start-up fragment
         if (savedInstanceState == null) {
-            HealthCenterFragment fragment = HealthCenterFragment.newInstance(healthCenters);
-            getSupportFragmentManager().beginTransaction().replace(R.id.tecsor_andrei_main_fl, fragment).commit();
+            openHCFragment(healthCenters);
         }
 
         fabInfo = findViewById(R.id.tecsor_andrei_main_fab_info);
@@ -76,21 +71,26 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, NEW_HC_REQUEST);
             }
         });
+
         fabInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                currentFragment = new InfoFragment();
                 getSupportFragmentManager().beginTransaction().replace(R.id.tecsor_andrei_main_fl,
-                        new InfoFragment()).commit();
+                        currentFragment).commit();
             }
         });
         fabHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getSupportFragmentManager().beginTransaction().replace(R.id.tecsor_andrei_main_fl,
-                        new HealthCenterFragment()).commit();
+                openHCFragment(healthCenters);
             }
         });
+    }
 
+    private void openHCFragment(List<HealthCenter> list) {
+        currentFragment = HealthCenterFragment.newInstance(list);
+        getSupportFragmentManager().beginTransaction().replace(R.id.tecsor_andrei_main_fl, currentFragment).commit();
     }
 
     private void setCurrentDate() {

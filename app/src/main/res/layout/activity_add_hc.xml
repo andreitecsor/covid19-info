@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cloudy_sky_blue"
     tools:context=".AddHCActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -11,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="16dp"
+        android:background="@drawable/cl_add"
         app:layout_constraintBottom_toTopOf="@+id/tecsor_andrei_add_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,6 +35,7 @@
                 android:id="@+id/tecsor_andrei_add_tiet_location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/transparent"
                 android:hint="@string/add_city_county" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -52,6 +55,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tecsor_andrei_add_tiet_address"
                 android:layout_width="match_parent"
+                android:background="@color/transparent"
                 android:layout_height="wrap_content"
                 android:hint="@string/add_address" />
 
@@ -75,6 +79,7 @@
                 android:id="@+id/tecsor_andrei_add_tiet_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/transparent"
                 android:hint="@string/add_clinic" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -96,17 +101,20 @@
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            android:textColorHighlight="@color/autumn_red"
+
             app:layout_constraintTop_toBottomOf="@+id/tecsor_andrei_add_tv_exclusive" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/tecsor_andrei_add_cl_hint"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
+            android:background="@drawable/blue_hint"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -116,12 +124,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
+                android:textSize="20dp"
                 android:text="Add a new Health Center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -129,11 +137,19 @@
 
     <Button
         android:id="@+id/tecsor_andrei_add_button"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginLeft="64dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginRight="64dp"
         android:layout_marginBottom="32dp"
         android:text="@string/add_btn_save"
+        android:textSize="18dp"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--TODO: FIX BUTTON COLLOR-->

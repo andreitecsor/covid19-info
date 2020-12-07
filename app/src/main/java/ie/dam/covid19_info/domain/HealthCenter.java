@@ -49,6 +49,7 @@ public class HealthCenter implements Serializable {
         this.covid19Dedicated = covid19Dedicated;
     }
 
+
     public boolean isCovid19Dedicated() {
         return covid19Dedicated;
     }

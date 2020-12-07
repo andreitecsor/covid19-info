@@ -1,4 +1,4 @@
-package ie.dam.covid19_info.async_task;
+package ie.dam.covid19_info.util.async_task;
 
 import android.os.Handler;
 import android.util.Log;
