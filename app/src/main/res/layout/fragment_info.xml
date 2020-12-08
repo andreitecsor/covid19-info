@@ -14,52 +14,17 @@
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/tecsor_andrei_info_cl_hint"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:background="@drawable/lv_row_hc"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/tecsor_andrei_info_tv_hint"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="@string/info_general"
-                android:textSize="18dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/tecsor_andrei_info_cl_virus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:background="@drawable/lv_row_hc"
+            android:background="@drawable/white_boxing"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tecsor_andrei_info_cl_hint">
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/tecsor_andrei_info_iv_virus"
@@ -69,10 +34,10 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:src="@drawable/ic_virus"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_virus" />
 
             <TextView
                 android:id="@+id/tecsor_andrei_info_tv_virus"
@@ -88,8 +53,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/tecsor_andrei_info_cl2_negative"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
@@ -97,7 +62,6 @@
             android:layout_marginRight="8dp"
             android:background="@drawable/lv_row_patient_negative"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tecsor_andrei_info_cl_virus">
 
@@ -110,18 +74,19 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-
+android:textColor="@color/black"
                 android:layout_marginBottom="8dp"
                 android:text="@string/tv_negative"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/tecsor_andrei_info_cl_positive"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
@@ -130,7 +95,6 @@
             android:layout_marginRight="8dp"
             android:background="@drawable/lv_row_patient_positive"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tecsor_andrei_info_cl2_negative">
 
@@ -155,12 +119,12 @@
             android:id="@+id/tecsor_andrei_info_cl3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/lv_row_hc"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:background="@drawable/white_boxing"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tecsor_andrei_info_cl_positive">
@@ -199,7 +163,7 @@
                     android:id="@+id/tecsor_andrei_info_tr1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/blue_hint">
+                    android:background="@drawable/blue_boxing">
 
                     <TextView
                         android:id="@+id/tecsor_andrei_info_tr1_type"
@@ -221,7 +185,7 @@
                     android:id="@+id/tecsor_andrei_info_tr2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/blue_hint">
+                    android:background="@drawable/blue_boxing">
 
                     <TextView
                         android:id="@+id/tecsor_andrei_info_tr2_type"
@@ -243,7 +207,7 @@
                     android:id="@+id/tecsor_andrei_info_tr3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/blue_hint">
+                    android:background="@drawable/blue_boxing">
 
                     <TextView
                         android:id="@+id/tecsor_andrei_info_tr3_type"
@@ -268,14 +232,34 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/tecsor_andrei_narcisist"
+            android:id="@+id/tecsor_andrei_thank_you"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/narcisist"
-            android:textSize="10dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="@string/info_thank_you"
+            android:textColor="@color/yellow"
+            android:textSize="17dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tecsor_andrei_info_cl3" />
+
+        <TextView
+            android:id="@+id/tecsor_andrei_thank_you_doctors"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:gravity="center_horizontal"
+            android:text="@string/thank_you"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tecsor_andrei_thank_you" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

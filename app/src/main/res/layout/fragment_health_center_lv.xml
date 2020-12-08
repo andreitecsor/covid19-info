@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/lv_row_hc"
+    android:background="@drawable/white_boxing"
     android:theme="@style/Theme.AndreiTecsorHW2">
 
 

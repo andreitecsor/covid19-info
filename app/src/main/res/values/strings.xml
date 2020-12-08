@@ -22,14 +22,15 @@
     <string name="add_hint">Add a new Health Center</string>
     <string name="info_general">General information</string>
     <string name="info_tv_covid_exclusive">: the health center is Covid-19 exclusive</string>
-    <string name="tv_negative">Oh! That was close! \nThis color tells you are Covid-19 free</string>
-    <string name="info_positive">Unfortunately, this color means you have it...\nListen to the docs and get some rest.\nWe wish you all the best and get better fast!</string>
+    <string name="tv_negative">Oh! That was close! \nRED = you are Covid-19 free!\nContinue to be vigilant and take care!</string>
+    <string name="info_positive">Unfortunately, GREEN = you have it...\nListen to the docs and get some rest.\nWe wish you all the best and get better fast!</string>
     <string name="info_rt_pcr">RT-PCR</string>
     <string name="info_99">99%</string>
     <string name="info_antigen">Antigen</string>
     <string name="info_50">50%</string>
     <string name="info_antibody">Antibody</string>
     <string name="info_30">30%</string>
-    <string name="narcisist">Created by Andrei Tecsor</string>
+    <string name="thank_you">To all the healthcare workers on the front lines of the coronavirus pandemic...</string>
+    <string name="info_thank_you">Thank you!</string>
 
 </resources>

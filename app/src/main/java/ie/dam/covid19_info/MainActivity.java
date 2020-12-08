@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
             HealthCenter healthCenter = (HealthCenter) data.getSerializableExtra(AddHCActivity.HC_KEY);
             if (healthCenter != null) {
                 Toast.makeText(getApplicationContext(), R.string.new_HC_added,
-                        Toast.LENGTH_LONG).show();
+                        Toast.LENGTH_SHORT).show();
                 healthCenters.add(healthCenter);
                 openHCFragment(healthCenters);
             }

@@ -48,7 +48,7 @@ public class AddHCActivity extends AppCompatActivity {
                     .show();
             return false;
         }
-        if (tietAddress.getText().toString() == null || tietAddress.getText().toString().trim().length() < 6) {
+        if (tietAddress.getText().toString() == null || tietAddress.getText().toString().trim().length() < 4) {
             Toast.makeText(getApplicationContext(), R.string.invalid_address, Toast.LENGTH_LONG)
                     .show();
             return false;
