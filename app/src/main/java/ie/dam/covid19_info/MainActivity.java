@@ -19,6 +19,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.Callable;
 
 import ie.dam.covid19_info.domain.Covid19Test;
 import ie.dam.covid19_info.domain.HealthCenter;
@@ -27,15 +28,22 @@ import ie.dam.covid19_info.domain.TestType;
 import ie.dam.covid19_info.fragment.HealthCenterFragment;
 import ie.dam.covid19_info.fragment.InfoFragment;
 import ie.dam.covid19_info.fragment.PatientFragment;
+import ie.dam.covid19_info.util.JsonParser;
+import ie.dam.covid19_info.util.async_task.AsyncTaskRunner;
+import ie.dam.covid19_info.util.async_task.Callback;
+import ie.dam.covid19_info.util.network.HttpManager;
 
 public class MainActivity extends AppCompatActivity {
     private static final int NEW_HC_REQUEST = 112;
+    private static final String JSON_URL = "https://jsonkeeper.com/b/KZ7L";
 
     private Fragment currentFragment;
     private FloatingActionButton fabInfo;
     private FloatingActionButton fabHome;
     private FloatingActionButton fabAdd;
     private List<HealthCenter> healthCenters = new ArrayList<>();
+
+    private AsyncTaskRunner asyncTaskRunner = new AsyncTaskRunner();
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -44,25 +52,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initialiseComponents(savedInstanceState);
-        //TestType type, LocalDate date, boolean result
-        Covid19Test c1 = new Covid19Test(TestType.PCR, LocalDate.now(), true);
-        Covid19Test c2 = new Covid19Test(TestType.ANTIBODY, LocalDate.now(), false);
-        Covid19Test c3 = new Covid19Test(TestType.ANTIGEN, LocalDate.now(), false);
+        getHCFromHttp();
+    }
 
-        Patient p1 = new Patient("Nicu ", "Muie", 32, true, c1);
-        Patient p2 = new Patient("Niculina", "Muie", 23, false, c2);
-        Patient p3 = new Patient("Niculisor", "MuieLuAURsiPSD", 21, false, c3);
-        Patient p4 = new Patient("Ardiana", "Barosanca", 45, true, c2);
-        Patient p5 = new Patient("Ciucalata", "Florin", 69, false, c1);
+    private void getHCFromHttp() {
+        Callable<String> asyncOperation = new HttpManager(JSON_URL);
+        Callback<String> mainThreadOperation = receiveHCsFromHttp();
+        asyncTaskRunner.executeAsync(asyncOperation, mainThreadOperation);
+    }
 
-        List<Patient> patients = new ArrayList<>();
-        patients.add(p1);
-        patients.add(p2);
-        patients.add(p3);
-        patients.add(p4);
-        patients.add(p5);
-        HealthCenter hc1 = new HealthCenter("Muiomed", "Str. Muie Aur", "Muie, Psd", true, patients);
-        healthCenters.add(hc1);
+    private Callback<String> receiveHCsFromHttp() {
+        return new Callback<String>() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void runResultOnUiThread(String result) {
+                healthCenters.addAll(JsonParser.fromJson(result));
+                openHCFragment(healthCenters);
+            }
+        };
     }
 
     @Override
@@ -119,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.tecsor_andrei_main_fl, currentFragment).commit();
     }
 
-    public void openPatientFragment(HealthCenter healthCenter){
+    public void openPatientFragment(HealthCenter healthCenter) {
         currentFragment = PatientFragment.newInstance(healthCenter);
         getSupportFragmentManager().beginTransaction().replace(R.id.tecsor_andrei_main_fl, currentFragment).commit();
     }
