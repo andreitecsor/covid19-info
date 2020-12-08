@@ -80,9 +80,6 @@ public class JsonParser {
         String lastName = object.getString(PATIENT_L_NAME);
         int age = object.getInt(PATIENT_AGE);
         boolean sex = object.getBoolean(PATIENT_SEX);
-
-
-        //FOR Covid19Test:
         Covid19Test covid19Test = readCovid19Test(object.getJSONObject(C19TEST));
         return new Patient(firstName, lastName, age, sex, covid19Test);
     }
