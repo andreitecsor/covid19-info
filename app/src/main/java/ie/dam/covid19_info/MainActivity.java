@@ -15,16 +15,12 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.Callable;
 
-import ie.dam.covid19_info.domain.Covid19Test;
 import ie.dam.covid19_info.domain.HealthCenter;
-import ie.dam.covid19_info.domain.Patient;
-import ie.dam.covid19_info.domain.TestType;
 import ie.dam.covid19_info.fragment.HealthCenterFragment;
 import ie.dam.covid19_info.fragment.InfoFragment;
 import ie.dam.covid19_info.fragment.PatientFragment;
@@ -46,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
     private AsyncTaskRunner asyncTaskRunner = new AsyncTaskRunner();
 
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

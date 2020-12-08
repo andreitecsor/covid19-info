@@ -1,7 +1,6 @@
 package ie.dam.covid19_info.domain;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 
 public class Patient implements Serializable {
     private String firstName;

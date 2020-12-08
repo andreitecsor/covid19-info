@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">covid19_info</string>
     <string name="main_current_date">Current date</string>
-
     <string name="add_clinic">Health center\'s name</string>
     <string name="add_btn_save">Save</string>
     <string name="add_address">Address</string>

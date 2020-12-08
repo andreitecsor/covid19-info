@@ -1,9 +1,5 @@
 package ie.dam.covid19_info.util;
 
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -17,7 +13,6 @@ import ie.dam.covid19_info.domain.HealthCenter;
 import ie.dam.covid19_info.domain.Patient;
 import ie.dam.covid19_info.domain.TestType;
 
-@RequiresApi(api = Build.VERSION_CODES.O)
 public class JsonParser {
 
     public static final String HC_NAME = "name";
@@ -93,8 +88,7 @@ public class JsonParser {
         }
         String date = object.getString(C19TEST_DATE);
         String[] dateValues = date.split("-");
-        LocalDate testDate = LocalDate.of(Integer.parseInt(dateValues[2]),
-                Integer.parseInt(dateValues[1]), Integer.parseInt(dateValues[0]));
+        LocalDate testDate = LocalDate.of(Integer.parseInt(dateValues[2]), Integer.parseInt(dateValues[1]), Integer.parseInt(dateValues[0]));
         boolean result = object.getBoolean(C19TEST_RESULT);
         return new Covid19Test(TestType.getByType(type), testDate, result);
     }
