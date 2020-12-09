@@ -27,7 +27,6 @@ public class AddHCActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_hc);
-        getWindow().setStatusBarColor(getResources().getColor(R.color.white));
         intent = getIntent();
         initialiseComponents();
         btnSave.setOnClickListener(saveClick());
@@ -47,6 +46,13 @@ public class AddHCActivity extends AppCompatActivity {
                 }
             }
         };
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.top_to_bot_in, R.anim.top_to_bot_out);
+        finish();
     }
 
     private boolean validateInputs() {
@@ -70,6 +76,8 @@ public class AddHCActivity extends AppCompatActivity {
 
 
     private void initialiseComponents() {
+        getWindow().setStatusBarColor(getResources().getColor(R.color.white));
+        getWindow().setNavigationBarColor(getResources().getColor(R.color.cloudy_sky_blue));
         tietName = findViewById(R.id.tecsor_andrei_add_tiet_name);
         tietAddress = findViewById(R.id.tecsor_andrei_add_tiet_address);
         tietLocation = findViewById(R.id.tecsor_andrei_add_tiet_location);
