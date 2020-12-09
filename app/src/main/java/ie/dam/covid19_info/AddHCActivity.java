@@ -1,6 +1,7 @@
 package ie.dam.covid19_info;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -51,8 +52,8 @@ public class AddHCActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(R.anim.top_to_bot_in, R.anim.top_to_bot_out);
         finish();
+        overridePendingTransition(R.anim.top_to_bot_in, R.anim.top_to_bot_out);
     }
 
     private boolean validateInputs() {
@@ -76,8 +77,8 @@ public class AddHCActivity extends AppCompatActivity {
 
 
     private void initialiseComponents() {
-        getWindow().setStatusBarColor(getResources().getColor(R.color.white));
-        getWindow().setNavigationBarColor(getResources().getColor(R.color.cloudy_sky_blue));
+        getWindow().setStatusBarColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
+        getWindow().setNavigationBarColor(ContextCompat.getColor(getApplicationContext(), R.color.cloudy_sky_blue));
         tietName = findViewById(R.id.tecsor_andrei_add_tiet_name);
         tietAddress = findViewById(R.id.tecsor_andrei_add_tiet_address);
         tietLocation = findViewById(R.id.tecsor_andrei_add_tiet_location);
