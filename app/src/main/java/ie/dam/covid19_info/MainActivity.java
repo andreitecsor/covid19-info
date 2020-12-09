@@ -1,5 +1,6 @@
 package ie.dam.covid19_info;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -83,20 +84,39 @@ public class MainActivity extends AppCompatActivity {
 
     private void initialiseComponents(Bundle savedInstanceState) {
         setCurrentDate();
-
         fabInfo = findViewById(R.id.tecsor_andrei_main_fab_info);
         fabHome = findViewById(R.id.tecsor_andrei_main_fab_home);
         fabAdd = findViewById(R.id.tecsor_andrei_main_fab_add);
 
-        fabAdd.setOnClickListener(new View.OnClickListener() {
+        fabAdd.setOnClickListener(addClick());
+        fabInfo.setOnClickListener(infoClick());
+        fabHome.setOnClickListener(homeClick());
+    }
+
+    private View.OnClickListener addClick() {
+        return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), AddHCActivity.class);
                 startActivityForResult(intent, NEW_HC_REQUEST);
+                overridePendingTransition(R.anim.bot_to_top_in, R.anim.bot_to_top_out);
             }
-        });
+        };
+    }
 
-        fabInfo.setOnClickListener(new View.OnClickListener() {
+    private View.OnClickListener homeClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!(currentFragment instanceof HealthCenterFragment)) {
+                    openHCFragment(healthCenters);
+                }
+            }
+        };
+    }
+
+    private View.OnClickListener infoClick() {
+        return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!(currentFragment instanceof InfoFragment)) {
@@ -108,15 +128,7 @@ public class MainActivity extends AppCompatActivity {
                             .commit();
                 }
             }
-        });
-        fabHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!(currentFragment instanceof HealthCenterFragment)) {
-                    openHCFragment(healthCenters);
-                }
-            }
-        });
+        };
     }
 
     private void openHCFragment(List<HealthCenter> list) {

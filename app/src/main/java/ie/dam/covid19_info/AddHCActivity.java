@@ -27,22 +27,29 @@ public class AddHCActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_hc);
+        getWindow().setStatusBarColor(getResources().getColor(R.color.white));
         intent = getIntent();
         initialiseComponents();
-        btnSave.setOnClickListener(new View.OnClickListener() {
+        btnSave.setOnClickListener(saveClick());
+    }
+
+    private View.OnClickListener saveClick() {
+        return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (validate()) {
+                if (validateInputs()) {
                     HealthCenter healthCenter = new HealthCenter(tietName.getText().toString(), tietAddress.getText().toString(), tietLocation.getText().toString(), switchDedicated.isChecked());
                     intent.putExtra(HC_KEY, healthCenter);
                     setResult(RESULT_OK, intent);
                     finish();
+                    overridePendingTransition(R.anim.top_to_bot_in, R.anim.top_to_bot_out);
+
                 }
             }
-        });
+        };
     }
 
-    private boolean validate() {
+    private boolean validateInputs() {
         if (tietName.getText().toString() == null || tietName.getText().toString().trim().length() < 3) {
             Toast.makeText(getApplicationContext(), R.string.error_name, Toast.LENGTH_LONG)
                     .show();
