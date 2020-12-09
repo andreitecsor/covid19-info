@@ -83,10 +83,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void initialiseComponents(Bundle savedInstanceState) {
         setCurrentDate();
-        //Start-up fragment
-        if (savedInstanceState == null) {
-            openHCFragment(healthCenters);
-        }
 
         fabInfo = findViewById(R.id.tecsor_andrei_main_fab_info);
         fabHome = findViewById(R.id.tecsor_andrei_main_fab_home);
@@ -103,27 +99,44 @@ public class MainActivity extends AppCompatActivity {
         fabInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                currentFragment = new InfoFragment();
-                getSupportFragmentManager().beginTransaction().replace(R.id.tecsor_andrei_main_fl,
-                        currentFragment).commit();
+                if (!(currentFragment instanceof InfoFragment)) {
+                    currentFragment = new InfoFragment();
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .setCustomAnimations(R.anim.right_to_left_in, R.anim.right_to_left_out)
+                            .replace(R.id.tecsor_andrei_main_fl, currentFragment)
+                            .commit();
+                }
             }
         });
         fabHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openHCFragment(healthCenters);
+                if (!(currentFragment instanceof HealthCenterFragment)) {
+                    openHCFragment(healthCenters);
+                }
             }
         });
     }
 
     private void openHCFragment(List<HealthCenter> list) {
+        if (currentFragment instanceof PatientFragment) {
+            currentFragment = HealthCenterFragment.newInstance(list);
+            getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.right_to_left_in, R.anim.right_to_left_out).replace(R.id.tecsor_andrei_main_fl, currentFragment).commit();
+            return;
+        }
+        if (currentFragment instanceof HealthCenterFragment) {
+            currentFragment = HealthCenterFragment.newInstance(list);
+            getSupportFragmentManager().beginTransaction().replace(R.id.tecsor_andrei_main_fl, currentFragment).commit();
+            return;
+        }
         currentFragment = HealthCenterFragment.newInstance(list);
-        getSupportFragmentManager().beginTransaction().replace(R.id.tecsor_andrei_main_fl, currentFragment).commit();
+        getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.left_to_right_in, R.anim.left_to_right_out).replace(R.id.tecsor_andrei_main_fl, currentFragment).commit();
     }
 
     public void openPatientFragment(HealthCenter healthCenter) {
         currentFragment = PatientFragment.newInstance(healthCenter);
-        getSupportFragmentManager().beginTransaction().replace(R.id.tecsor_andrei_main_fl, currentFragment).commit();
+        getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.left_to_right_in, R.anim.left_to_right_out).replace(R.id.tecsor_andrei_main_fl, currentFragment).commit();
     }
 
     private void setCurrentDate() {
